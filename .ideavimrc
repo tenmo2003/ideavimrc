@@ -1,0 +1,116 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+set number
+set relativenumber
+set multicursor
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=8
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+set which-key
+set mini-ai
+set peekaboo
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "50"
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+set multiple-cursors
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+"" ================REMAPS==================
+" Set leader key
+let mapleader = " "
+
+
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+
+
+" Join lines and maintain cursor
+nnoremap J mzJ`z
+
+" Scroll down/up and center
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Search next/previous and center
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Paste over selection without yanking
+xnoremap <leader>p "_dP
+
+" Yank to system clipboard
+nnoremap <leader>Y "+Y
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
+" Delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Use <C-c> as Esc in insert mode
+inoremap <C-c> <Esc>
+
+" Disable Q
+nnoremap Q <nop>
+
+nnoremap <leader><Tab> :tabnext<CR>
+nnoremap <leader><S-Tab> :tabprevious<CR>
+
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+map K <Action>(ShowHoverInfo)
+map <leader>co <Action>(OptimizeImports)
+map <leader>cem <Action>(ExtractMethod)
+map <leader>cev <Action>(IntroduceVariable)
+map <leader>cec <Action>(IntroduceConstant)
+
+nmap <leader>vca <Action>(ShowIntentionActions)
+nmap <leader>vrn <Action>(RenameElement)
+
+imap <C-n> <Action>(HippieCompletion)
+imap <C-p> <Action>(HippieBackwardCompletion)
