@@ -104,10 +104,10 @@ nnoremap <leader><S-Tab> :tabprevious<CR>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 map K <Action>(ShowHoverInfo)
-map <leader>co <Action>(OptimizeImports)
-map <leader>cem <Action>(ExtractMethod)
-map <leader>cev <Action>(IntroduceVariable)
-map <leader>cec <Action>(IntroduceConstant)
+map <S-M-o> <Action>(OptimizeImports)
+map <leader>em <Action>(ExtractMethod)
+map <leader>ev <Action>(IntroduceVariable)
+map <leader>ec <Action>(IntroduceConstant)
 
 nmap <leader>vca <Action>(ShowIntentionActions)
 nmap <leader>vrn <Action>(RenameElement)
