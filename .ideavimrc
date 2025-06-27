@@ -114,3 +114,5 @@ nmap <leader>vrn <Action>(RenameElement)
 
 imap <C-n> <Action>(HippieCompletion)
 imap <C-p> <Action>(HippieBackwardCompletion)
+
+nmap <C-p> <Action>(GotoFile)
